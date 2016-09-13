@@ -1,0 +1,3651 @@
+{
+    "swagger": "2.0",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/api",
+    "host": "stage.hamsaa.ir",
+    "info": {
+        "version": "",
+        "title": "HamsaaApi",
+        "description": ""
+    },
+    "paths": {
+        "/Search/timeline/{contentType}/{text}/{order}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "contentType",
+                    "in": "path",
+                    "description": "contentType : user | problem | idea | hashtag | userFollowing | campaign | category | timeline",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "text",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "order",
+                    "in": "path",
+                    "description": "orderby -> user -> DateTime = 0, IdeaCount = 1, ProblemCount = 2, MeTooCount = 3, FollowerCount = 4, FollowingCount = 5, CommentCount = 6\n\norderby -> idea -> DateTime = 0, VoteUpCount = 1 ,VoteCount = 2 ,Visit,CommentCoun\n\norderby -> problem -> DateTime = 0, IdeaCount = 1,MeTooCount = 2,Visit = 3\norderby -> hashtag -> DateTime = 0, Count = 1, Length = 2, IsCategory = 3\n\norderby -> userfollowing -> DateTime = 0, IdeaCount = 1,ProblemCount = 2,MeTooCount = 3,FollowerCount = 4,FollowingCount = 5,CommentCount = 6\n\norderby -> timeline -> DateTime = 0, MostMetoo or MostVote = 1\n\norderby -> campaign -> DateTime = 0, StartDate = 1, EndDate = 2, IsEnabled = 3\n\norderby -> category -> DateTime = 0, Count, Length, IsCategory",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Search"
+                ],
+                "summary": "Search",
+                "description": "",
+                "operationId": "GET_Search-timeline-contentType-text-order-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/item"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/Timeline/{a}/{b}/{c}/{d}": {
+            "parameters": [
+                {
+                    "name": "a",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "b",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "c",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "d",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Timeline"
+                ],
+                "summary": "Get Timeline",
+                "description": "",
+                "operationId": "GET_Timeline-a-b-c-d",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/item"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/Register/Phone": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register Phone",
+                "description": "",
+                "operationId": "POST_Register-Phone",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "remainingTime": {
+                                    "type": "number"
+                                },
+                                "hashCode": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "phoneNumber": {
+                                    "type": "number"
+                                },
+                                "deviceInfo": {
+                                    "$ref": "#/definitions/device-info"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/register/active": {
+            "get": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register Active",
+                "description": "",
+                "operationId": "GET_register-active",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "activationCode",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 1707
+                    },
+                    {
+                        "name": "tempId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 41285
+                    },
+                    {
+                        "name": "verifId",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " 48da2dc60c060f274cafe897eb7789b3"
+                    },
+                    {
+                        "name": "phoneNumber",
+                        "in": "header",
+                        "description": "",
+                        "type": "number",
+                        "default": 10
+                    },
+                    {
+                        "name": "pushToken",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " NOTOKEN"
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "type": "number"
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/register/call": {
+            "post": {
+                "tags": [
+                    "Register"
+                ],
+                "summary": "Register Call",
+                "description": "",
+                "operationId": "POST_register-call",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "Hash": {
+                                    "type": "string"
+                                },
+                                "phoneNumber": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": "application/json"
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " windows"
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "type": "number",
+                        "default": 1
+                    }
+                ]
+            }
+        },
+        "/user/{username}": {
+            "parameters": [
+                {
+                    "name": "username",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User ",
+                "description": "",
+                "operationId": "GET_user-username",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                },
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/user": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Update",
+                "description": "",
+                "operationId": "POST_user",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/user"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "علی"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "me@alimalek.ir"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "AliMalek"
+                    },
+                    {
+                        "name": "link",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "alimalek.ir"
+                    },
+                    {
+                        "name": "desc",
+                        "in": "formData",
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/User/People/metooers/{id}/{verbID}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "verbID",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get Doer User",
+                "description": "",
+                "operationId": "GET_User-People-metooers-id-verbID-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "people": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/people"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/User/follow/changestate/{id}/{isFollowing}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "isFollowing",
+                    "in": "path",
+                    "required": true,
+                    "type": "boolean"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Follow",
+                "description": "",
+                "operationId": "GET_User-follow-changestate-id-isFollowing",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "isFollowing": {
+                                    "type": "boolean"
+                                },
+                                "isPrivate": {
+                                    "type": "boolean"
+                                },
+                                "isRequested": {
+                                    "type": "boolean"
+                                },
+                                "didResponseToRequest": {
+                                    "type": "boolean"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/User/Action/{action}/{id}/{button_state}": {
+            "parameters": [
+                {
+                    "name": "action",
+                    "in": "path",
+                    "description": "Action to perform",
+                    "required": true,
+                    "type": "string",
+                    "enum": [
+                        "metoo",
+                        "like",
+                        "voteup",
+                        "votedown"
+                    ]
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id of Problem, idea, comment",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "button_state",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Action",
+                "description": "",
+                "operationId": "GET_User-Action-action-id-button_state",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ideaId": {
+                                    "type": "integer"
+                                },
+                                "voteUpCount": {
+                                    "type": "integer"
+                                },
+                                "voteDownCount": {
+                                    "type": "integer"
+                                },
+                                "userId": {
+                                    "type": "integer"
+                                },
+                                "isVotedUp": {
+                                    "type": "boolean"
+                                },
+                                "isVotedDown": {
+                                    "type": "boolean"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/User/picture": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Profile Pic",
+                "description": "",
+                "operationId": "POST_User-picture",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "formData",
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "name": "Content-Disposition",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": "form-data"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/user/setting": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update User Setting",
+                "description": "",
+                "operationId": "POST_user-setting",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "isPrivate",
+                        "in": "formData",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/User/Follow/SetRequest/{id}/{verb}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "id of person that we want to accept or reject him/her request",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "verb",
+                    "in": "path",
+                    "description": "accept:true,  reject:false",
+                    "required": true,
+                    "type": "boolean"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Accept or Reject Request",
+                "description": "",
+                "operationId": "GET_User-Follow-SetRequest-id-verb",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "isFollowing": {
+                                    "type": "boolean"
+                                },
+                                "isPrivate": {
+                                    "type": "boolean"
+                                },
+                                "isRequested": {
+                                    "type": "boolean"
+                                },
+                                "didResponseToRequest": {
+                                    "type": "boolean"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/user/switchaccount": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "SwitchAccount",
+                "description": "",
+                "operationId": "GET_user-switchaccount",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "organizations": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/organization"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/problem": {
+            "post": {
+                "tags": [
+                    "Problem"
+                ],
+                "summary": "Add Problem",
+                "description": "anonymouselevel :\n0 -> همه ببینن\n1->دوستام فقط ببینن\n2->هیچ‌کس نبینه\n\ncategories:\nلیستی از دسته بندی ها  اگر میخواهید با دسته بندی ثبت شود و خالی گذاشتن یا -۱ گذاشتن به صورت عمومی ثبت مشود",
+                "operationId": "POST_problem",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "userID": {
+                                    "type": "integer"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "imageUrl": {
+                                    "type": "string"
+                                },
+                                "file": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "IsMeeTooed": {
+                                    "type": "boolean"
+                                },
+                                "IsFollowed": {
+                                    "type": "boolean"
+                                },
+                                "metooCount": {
+                                    "type": "integer"
+                                },
+                                "text": {
+                                    "type": "string"
+                                },
+                                "ideaCount": {
+                                    "type": "integer"
+                                },
+                                "commentCount": {
+                                    "type": "integer"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "sample string 1"
+                    },
+                    {
+                        "name": "date",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "2015-12-07T11:29:00",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "anonymouseLevel",
+                        "in": "formData",
+                        "description": "0 -> همه ببینن\n1->دوستام فقط ببینن\n2->هیچ‌کس نبینه",
+                        "type": "integer",
+                        "default": 2
+                    },
+                    {
+                        "name": "categories",
+                        "in": "header",
+                        "description": "",
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/problem/{targetUserId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "targetUserId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Problem"
+                ],
+                "summary": "Get Problem",
+                "description": "Public Problem: /-1/0 Popular Problem : /-1/1 Friend: /-2/",
+                "operationId": "GET_problem-targetUserId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "problems": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/problem"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/problem/get/{problemId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "problemId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Problem"
+                ],
+                "summary": "Get Problem By Id",
+                "description": "",
+                "operationId": "GET_problem-get-problemId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ideas": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/idea"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/notif/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "User Notification",
+                "description": "for get count without making it zero: set from = -1\n    \n    notif contentType -> 0:idea , 1:problem, 3:comment on idea, 4: user, 5: comment on problem",
+                "operationId": "GET_notif-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "notifs": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/notif"
+                                    }
+                                },
+                                "notifId": {
+                                    "type": "integer"
+                                },
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/notif/seen/{notif_id}": {
+            "parameters": [
+                {
+                    "name": "notif_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Notification Seen",
+                "description": "",
+                "operationId": "GET_notif-seen-notif_id",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "notifs": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/notif"
+                                    }
+                                },
+                                "notifId": {
+                                    "type": "integer"
+                                },
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/notif/message": {
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "New Version",
+                "description": "",
+                "operationId": "GET_notif-message",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Text": {
+                                    "type": "string"
+                                },
+                                "Link": {
+                                    "type": "string"
+                                },
+                                "ButtonCaptionOk": {
+                                    "type": "string"
+                                },
+                                "Title": {
+                                    "type": "string"
+                                },
+                                "LastVersion": {
+                                    "type": "number"
+                                },
+                                "ButtonCaptionCancel": {
+                                    "type": "string"
+                                },
+                                "Mandatory": {
+                                    "type": "boolean"
+                                },
+                                "Picture": {
+                                    "type": "string"
+                                },
+                                "Home": {
+                                    "$ref": "#/definitions/home"
+                                },
+                                "Category": {
+                                    "$ref": "#/definitions/category"
+                                },
+                                "CategoryLastUpdate": {
+                                    "type": "integer"
+                                },
+                                "InvitationMessage": {
+                                    "type": "string"
+                                },
+                                "Organization": {
+                                    "$ref": "#/definitions/organization"
+                                },
+                                "IsUserMultiOrganization": {
+                                    "type": "boolean"
+                                },
+                                "FeaturedTabTitle": {
+                                    "type": "string"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/notif/PublicPush/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Notification"
+                ],
+                "summary": "Get Public Push",
+                "description": "",
+                "operationId": "GET_notif-PublicPush-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "notifications": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/notification"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/Idea/{problemId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "problemId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Idea"
+                ],
+                "summary": "Get Problem Ideas",
+                "description": "",
+                "operationId": "GET_Idea-problemId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ideas": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/idea"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "pushToken",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " NOTKEN"
+                    }
+                ]
+            }
+        },
+        "/idea/user/{targetUserId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "targetUserId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Idea"
+                ],
+                "summary": "Get User Ideas",
+                "description": "",
+                "operationId": "GET_idea-user-targetUserId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ideas": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/idea"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/idea/user/timeline/{targetUserId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "targetUserId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Idea"
+                ],
+                "summary": "Get User Ideas As TimeLine",
+                "description": "",
+                "operationId": "GET_idea-user-timeline-targetUserId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Items": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/item"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/idea/get/{ideaId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "ideaId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Idea"
+                ],
+                "summary": "Get Idea By Id",
+                "description": "",
+                "operationId": "GET_idea-get-ideaId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comments": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/comment"
+                                    }
+                                },
+                                "": {
+                                    "$ref": "#/definitions/userproblem"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/api/idea": {
+            "post": {
+                "tags": [
+                    "Idea"
+                ],
+                "summary": "Add Idea and Comment",
+                "description": " IsComment == TRUE ? CommentOnProblem ELSE Idea\n    \n    نظر روی مسئله ثبت می کند :)\n    \n    اگر ایده مستقل باشد می توانید با اضافه کردن دسته بندی آن را به دسته ای مشخص منتقل کنید ولی اگر ایده مستقل نیست و مربوط به یک فکر خاص است، دسته بندی مرتبط با آن فکر به این ایده ارث میرسد",
+                "operationId": "POST_api-idea",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/userproblem"
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "problemid",
+                        "in": "formData",
+                        "type": "integer",
+                        "default": 666
+                    },
+                    {
+                        "name": "content",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "sample"
+                    },
+                    {
+                        "name": "date",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "2015-10-10T17:07:30",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "categories",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " 1,3"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:userId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:orgId"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:platform"
+                    }
+                ]
+            }
+        },
+        "/idea/picture": {
+            "post": {
+                "tags": [
+                    "Saa Image"
+                ],
+                "summary": "Add Idea Image",
+                "description": "",
+                "operationId": "POST_idea-picture",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/statusentity"
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "formData",
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "ideaId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 21825
+                    }
+                ]
+            }
+        },
+        "/problem/picture": {
+            "post": {
+                "tags": [
+                    "Saa Image"
+                ],
+                "summary": "Add Problem Image",
+                "description": "",
+                "operationId": "POST_problem-picture",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/statusentity"
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "in": "formData",
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "problemId",
+                        "in": "header",
+                        "description": "",
+                        "type": "integer",
+                        "default": 666
+                    }
+                ]
+            }
+        },
+        "/report": {
+            "post": {
+                "tags": [
+                    "Report Abuse"
+                ],
+                "summary": "Report Abuse",
+                "description": "",
+                "operationId": "POST_report",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contenttype",
+                        "in": "formData",
+                        "description": "1 : problem | 2 : idea | 3 : comment | 4 : user",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "contentid",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer",
+                        "default": 802
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "type": "string",
+                        "default": " windows"
+                    },
+                    {
+                        "$ref": "#/parameters/trait:commonHeaders:appVersion"
+                    }
+                ]
+            }
+        },
+        "/delete/{entity}/{id}": {
+            "parameters": [
+                {
+                    "name": "entity",
+                    "in": "path",
+                    "description": "The entity could be \"problem\", \"idea\", \"comment\"",
+                    "required": true,
+                    "type": "string",
+                    "enum": [
+                        "problem",
+                        "idea",
+                        "comment"
+                    ]
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Delete"
+                ],
+                "summary": "Delete Entity",
+                "description": "",
+                "operationId": "GET_delete-entity-id",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    }
+                ]
+            }
+        },
+        "/notif/ContactUs": {
+            "post": {
+                "tags": [
+                    "Contact Us"
+                ],
+                "summary": "ContactUs",
+                "description": "",
+                "operationId": "POST_notif-ContactUs",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "people": {
+                                    "type": "string"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Text",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "test mishavad"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    }
+                ]
+            }
+        },
+        "/contact/update": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Update",
+                "description": "",
+                "operationId": "POST_contact-update",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                },
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "delete": {
+                                    "type": "object",
+                                    "properties": {
+                                        "contacts": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/contact"
+                                            }
+                                        }
+                                    }
+                                },
+                                "modify": {
+                                    "type": "object",
+                                    "properties": {
+                                        "contacts": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/contact"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    }
+                ]
+            }
+        },
+        "/contact/InviteContact/{sth}": {
+            "parameters": [
+                {
+                    "name": "sth",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ],
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "invite contact",
+                "description": "",
+                "operationId": "POST_contact-InviteContact-sth",
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                },
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " 48"
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ]
+            }
+        },
+        "/config/GetConfig": {
+            "get": {
+                "tags": [
+                    "Config"
+                ],
+                "summary": "Get Config",
+                "description": "",
+                "operationId": "GET_config-GetConfig",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Text": {
+                                    "type": "string",
+                                    "description": "needs to be completed"
+                                },
+                                "Link": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "ButtonCaptionOk": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "Title": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "LastVersion": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "ButtonCaptionCancel": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "Mandatory": {
+                                    "type": "boolean",
+                                    "description": "..."
+                                },
+                                "Picture": {
+                                    "$ref": "#/definitions/picture"
+                                },
+                                "Home": {
+                                    "$ref": "#/definitions/home"
+                                },
+                                "Category": {
+                                    "$ref": "#/definitions/category"
+                                },
+                                "CategoryLastUpdate": {
+                                    "type": "integer",
+                                    "description": "..."
+                                },
+                                "InvitationMessage": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "Organization": {
+                                    "$ref": "#/definitions/organization"
+                                },
+                                "IsUserMultiOrganization": {
+                                    "type": "boolean",
+                                    "description": "..."
+                                },
+                                "FeaturedTabTitle": {
+                                    "type": "string",
+                                    "description": "..."
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    },
+                    {
+                        "name": "verifId",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/comment": {
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Add Comment",
+                "description": "",
+                "operationId": "POST_comment",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "userID": {
+                                    "type": "integer"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "imageUrl": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "isLiked": {
+                                    "type": "boolean"
+                                },
+                                "likeCount": {
+                                    "type": "integer"
+                                },
+                                "content": {
+                                    "type": "string"
+                                },
+                                "IsFollowed": {
+                                    "type": "boolean"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "ideaid",
+                        "in": "formData",
+                        "type": "integer",
+                        "default": 20966
+                    },
+                    {
+                        "name": "date",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "2015-12-17T01:10:41",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "content",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "Commnet Sample"
+                    },
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    },
+                    {
+                        "name": "pushToken",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": "NOTOKEN"
+                    },
+                    {
+                        "name": "IsComment",
+                        "in": "header",
+                        "description": "If you want Comment on Problem else Remove this",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ]
+            }
+        },
+        "/comment/{ideaId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "ideaId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "description": "0 ---> order by DATE, \n1 ---> order by LIKECOUNT",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get Idea Comments",
+                "description": "",
+                "operationId": "GET_comment-ideaId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comments": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/comment"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    }
+                ]
+            }
+        },
+        "/Problem/getcomments/{ProblemId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "ProblemId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "description": "0 ---> DATE, 1 ---> LIKECOUNT",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get Problem Comments 1",
+                "description": "",
+                "operationId": "GET_Problem-getcomments-ProblemId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comments": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/comment"
+                                    }
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "userID": {
+                                    "type": "integer"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "imageUrl": {
+                                    "type": "string"
+                                },
+                                "file": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "IsMeeTooed": {
+                                    "type": "boolean"
+                                },
+                                "IsFollowed": {
+                                    "type": "boolean"
+                                },
+                                "metooCount": {
+                                    "type": "integer"
+                                },
+                                "text": {
+                                    "type": "string"
+                                },
+                                "ideaCount": {
+                                    "type": "integer"
+                                },
+                                "commentCount": {
+                                    "type": "integer"
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    }
+                ]
+            }
+        },
+        "/Comment/Problem/{ProblemId}/{orderBy}/{from}/{count}": {
+            "parameters": [
+                {
+                    "name": "ProblemId",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "orderBy",
+                    "in": "path",
+                    "description": "0 ---> DATE, 1 ---> LIKECOUNT",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "from",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get Problem Comments 2",
+                "description": "",
+                "operationId": "GET_Comment-Problem-ProblemId-orderBy-from-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "comments": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/comment"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    }
+                ]
+            }
+        },
+        "/campaign": {
+            "get": {
+                "tags": [
+                    "Campaign"
+                ],
+                "summary": "Get Campaign",
+                "description": "",
+                "operationId": "GET_campaign",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Title": {
+                                    "type": "string",
+                                    "description": ""
+                                },
+                                "EndDateTime": {
+                                    "type": "string"
+                                },
+                                "StarDateTime": {
+                                    "type": "string"
+                                },
+                                "IsEnabled": {
+                                    "type": "boolean"
+                                },
+                                "HashTags": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "HashTagIds": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " windows"
+                    }
+                ]
+            }
+        },
+        "/Category/{OrderBy}/{From}/{count}": {
+            "parameters": [
+                {
+                    "name": "OrderBy",
+                    "in": "path",
+                    "description": "0 ---> orders item by ID||\n1 ---> orders item by COUNT||\n2 ---> orders item by PRIORITY",
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "minimum": 0,
+                    "maximum": 2
+                },
+                {
+                    "name": "From",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                },
+                {
+                    "name": "count",
+                    "in": "path",
+                    "required": true,
+                    "type": "integer"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get Category",
+                "description": "",
+                "operationId": "GET_Category-OrderBy-From-count",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "hashTags": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "ID": {
+                                                "type": "integer"
+                                            },
+                                            "hashTag": {
+                                                "type": "string"
+                                            },
+                                            "Count": {
+                                                "type": "integer"
+                                            },
+                                            "Picture": {
+                                                "$ref": "#/definitions/picture"
+                                            },
+                                            "IsCategory": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                },
+                                "statusEntity": {
+                                    "$ref": "#/definitions/statusentity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 48
+                    },
+                    {
+                        "name": "orgId",
+                        "in": "header",
+                        "description": "",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "appVersion",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "number",
+                        "default": 1
+                    },
+                    {
+                        "name": "Platform",
+                        "in": "header",
+                        "description": "",
+                        "required": false,
+                        "type": "string",
+                        "default": " android"
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "category": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "comment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "isLiked": {
+                    "type": "boolean"
+                },
+                "likeCount": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "IsFollowed": {
+                    "type": "boolean"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "contact": {
+            "type": "object",
+            "properties": {
+                "fname": {
+                    "type": "string"
+                },
+                "lname": {
+                    "type": "string"
+                },
+                "tels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "device-info": {
+            "type": "object",
+            "properties": {
+                "brand": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "AndroidVersion": {
+                    "type": "number"
+                },
+                "phoneUId": {
+                    "type": "string"
+                }
+            }
+        },
+        "home": {
+            "type": "object",
+            "properties": {
+                "defaultTabPopular": {
+                    "type": "boolean"
+                },
+                "defaultFilter": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea": {
+            "type": "object",
+            "properties": {
+                "problemId": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "file": {
+                    "type": "null"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "voteUpCount": {
+                    "type": "integer"
+                },
+                "voteDownCount": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "commentCount": {
+                    "type": "integer"
+                },
+                "voteStatus": {
+                    "type": "integer"
+                },
+                "IsFollowed": {
+                    "type": "boolean"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "itemContent": {
+            "type": "object",
+            "properties": {
+                "problemId": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "file": {
+                    "type": "null"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "voteUpCount": {
+                    "type": "integer"
+                },
+                "voteDownCount": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "commentCount": {
+                    "type": "integer"
+                },
+                "voteStatus": {
+                    "type": "integer"
+                },
+                "IsFollowed": {
+                    "type": "boolean"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "item": {
+            "type": "object",
+            "properties": {
+                "Type": {
+                    "type": "string"
+                },
+                "Item": {
+                    "$ref": "#/definitions/itemContent"
+                }
+            }
+        },
+        "notif": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "integer"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "contentID": {
+                    "type": "integer"
+                },
+                "contentType": {
+                    "type": "integer"
+                },
+                "ID": {
+                    "type": "integer"
+                },
+                "isPrivate": {
+                    "type": "boolean"
+                },
+                "isFollowing": {
+                    "type": "boolean"
+                },
+                "didResponseToRequest": {
+                    "type": "boolean"
+                },
+                "isRequested": {
+                    "type": "boolean"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            }
+        },
+        "notification": {
+            "type": "object",
+            "properties": {
+                "Image": {
+                    "type": "string"
+                },
+                "Title": {
+                    "type": "string"
+                },
+                "Content": {
+                    "type": "string"
+                },
+                "KeyCaption": {
+                    "type": "string"
+                },
+                "KeyAction": {
+                    "type": "integer"
+                },
+                "contentType": {
+                    "type": "integer"
+                },
+                "contentId": {
+                    "type": "integer"
+                },
+                "CreatedDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "organization": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "..."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "logoAddress": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "color": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "contactUs": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "aboutUs": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "blogUrgl": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "telegramAccount": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "instagramAccount": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "CreatedDateTime": {
+                    "type": "string",
+                    "description": "..."
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "people": {
+            "type": "object",
+            "properties": {
+                "userId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "isFollowing": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "isPrivate": {
+                    "type": "boolean"
+                },
+                "isRequested": {
+                    "type": "boolean"
+                },
+                "didResponseToRequest": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "picture": {
+            "type": "object"
+        },
+        "userproblem": {
+            "type": "object",
+            "properties": {
+                "problemId": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "voteUpCount": {
+                    "type": "integer"
+                },
+                "voteDownCount": {
+                    "type": "integer"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "commentCount": {
+                    "type": "integer"
+                },
+                "voteStatus": {
+                    "type": "integer"
+                },
+                "IsFollowed": {
+                    "type": "boolean"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "problem": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "IsMeeTooed": {
+                    "type": "boolean"
+                },
+                "IsFollowed": {
+                    "type": "boolean"
+                },
+                "metooCount": {
+                    "type": "integer"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "ideaCount": {
+                    "type": "integer"
+                },
+                "commentCount": {
+                    "type": "integer"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        },
+        "statusentity": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "user": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "integer"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "isFollowed": {
+                    "type": "boolean"
+                },
+                "followingCount": {
+                    "type": "integer"
+                },
+                "followerCount": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "ideaCount": {
+                    "type": "integer"
+                },
+                "problemCount": {
+                    "type": "integer"
+                },
+                "isPrivate": {
+                    "type": "boolean"
+                },
+                "isRequested": {
+                    "type": "boolean"
+                },
+                "didResponseToRequest": {
+                    "type": "boolean"
+                },
+                "gender": {
+                    "type": "integer"
+                },
+                "province": {
+                    "type": "integer"
+                },
+                "city": {
+                    "type": "integer"
+                },
+                "education": {
+                    "type": "integer"
+                },
+                "birthDate": {
+                    "type": "string"
+                },
+                "skills": {
+                    "type": "string"
+                },
+                "interests": {
+                    "type": "string"
+                },
+                "statusEntity": {
+                    "$ref": "#/definitions/statusentity"
+                }
+            }
+        }
+    },
+    "parameters": {
+        "trait:commonHeaders:userId": {
+            "name": "userId",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "default": 48
+        },
+        "trait:commonHeaders:orgId": {
+            "name": "orgId",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "type": "integer",
+            "default": 1
+        },
+        "trait:commonHeaders:appVersion": {
+            "name": "appVersion",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "number",
+            "default": 1
+        },
+        "trait:commonHeaders:platform": {
+            "name": "platform",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "default": " windows"
+        }
+    }
+}
